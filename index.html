@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Holic</title>
+</head>
+
+<body>
+  <header id="header">
+    <div class="hero-header">
+      <div class="bg-image"></div>
+      <div class="emblem-image">
+        <img src="./img/licenseEmblem.png" alt="License emblem">
+      </div>
+      <h1 class="hero-text-image">
+        <picture>
+          <source media="(min-width:751px )" srcset="./img/waterHolic-pc.png">
+          <img src="./img/waterHolic-sp.png" alt="Water Holic">
+        </picture>
+      </h1>
+      <div id="headerMenu">
+        <div id="globalMenu">
+          <nav>
+            <ul class="menu-list">
+              <li class="cross-box"><a href="">ホーム</a></li>
+              <li class="cross-box"><a href="">レッスン</a></li>
+              <li class="cross-box"><a href="">トレーナー</a></li>
+              <li class="cross-box"><a href="">アクセス</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div id="mobileMenu">
+          <div id="mobileMenuBg"></div>
+          <nav>
+            <ul class="menu-list">
+              <li class="cross-box"><a href="">ホーム</a></li>
+              <li class="cross-box"><a href="">レッスン</a></li>
+              <li class="cross-box"><a href="">トレーナー</a></li>
+              <li class="cross-box"><a href="">アクセス</a></li>
+            </ul>
+          </nav>
+          <div id="mobileMenuBtn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </div>
+
+  </header>
+
+  <style>
+    /* ****************************** */
+    /* Reset */
+    /* ****************************** */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      color: #333;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      appearance: none;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    /* ****************************** */
+    /* common */
+    /* ****************************** */
+    body,
+    body a {
+      color: rgb(255, 255, 255);
+    }
+
+    /* ****************************** */
+    /* header */
+    /* ****************************** */
+    .hero-header {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+    }
+
+    .hero-header .bg-image {
+      background-image: url(./img/waterHolic-bg-sp.jpg);
+      background-position: center;
+      background-size: cover;
+      height: 100vh;
+      height: 100dvh;
+    }
+
+    .hero-header .emblem-image {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+    }
+
+    .hero-text-image {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+    }
+
+    #headerMenu nav li {
+      font-weight: bold;
+      text-align: center;
+      padding: 3px 0;
+    }
+
+    #headerMenu nav li a {
+      text-shadow: 2px 2px 2px #257496;
+    }
+
+    #globalMenu {
+      display: none;
+    }
+
+    #mobileMenu {
+      display: block;
+    }
+
+    #mobileMenu .menu-list {
+      position: fixed;
+      top: -100vh;
+      left: 0;
+      width: 100%;
+      padding: 80px 10px 180px;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #mobileMenu #mobileMenuBg {
+      position: fixed;
+      top: -100vh;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-image: url(./img/mobile-menu-bg.png);
+      background-position: top 0 center;
+      background-size: 120% 100%;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #mobileMenu.open .menu-list {
+      top: 0;
+      visibility: visible;
+    }
+
+    #mobileMenu.open #mobileMenuBg {
+      top: 0;
+      opacity: 0.8;
+    }
+
+    #mobileMenu nav li {
+      width: 250px;
+      margin: 20px auto;
+    }
+
+    .cross-box {
+      position: relative;
+      padding: 0.25em 1em;
+      border-top: solid 2px rgba(255, 255, 255, 0.8);
+      border-bottom: solid 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .cross-box:before,
+    .cross-box:after {
+      content: '';
+      position: absolute;
+      top: -7px;
+      width: 2px;
+      height: calc(100% + 14px);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .cross-box:before {
+      left: 7px;
+    }
+
+    .cross-box:after {
+      right: 7px;
+    }
+
+    #mobileMenuBtn {
+      display: block;
+      position: fixed;
+      top: 10px;
+      right: 15px;
+      width: 35px;
+      height: 35px;
+      padding: 2.5px;
+      z-index: 100;
+    }
+
+    #mobileMenuBtn::before {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      content: "";
+      width: 55px;
+      height: 55px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      background: rgba(120, 120, 120, 0.6);
+      box-shadow: 0px 0px 2px rgb(255, 255, 255);
+      z-index: -1;
+    }
+
+    #mobileMenuBtn span {
+      display: block;
+      margin-top: 6.75px;
+      width: 30px;
+      height: 1.5px;
+      background: rgb(255, 255, 255);
+      box-shadow: 1px 1px 1px #257496;
+      transition: all 0.4s ease-in-out;
+    }
+
+    #mobileMenu.open #mobileMenuBtn span:nth-child(1) {
+      transform: translateY(8px) rotate(405deg);
+
+    }
+
+    #mobileMenu.open #mobileMenuBtn span:nth-child(2) {
+      opacity: 0;
+
+    }
+
+    #mobileMenu.open #mobileMenuBtn span:nth-child(3) {
+      transform: translateY(-8px) rotate(-405deg);
+    }
+
+    @media screen and (min-width:751px) {
+      .hero-header .bg-image {
+        background-image: url(./img/waterHolic-bg-pc.jpg);
+      }
+
+      .hero-header .emblem-image {
+        top: calc(100% - 185px);
+        left: calc(100% - 215px);
+        width: 150px;
+      }
+
+      .hero-text-image {
+        bottom: 18%;
+        min-width: 700px;
+        filter: drop-shadow(2px 2px 2px #257496);
+      }
+
+      #mobileMenu {
+        display: none;
+      }
+
+      #globalMenu {
+        display: block;
+      }
+
+      #globalMenu .menu-list {
+        position: absolute;
+        top: 15%;
+        left: 0;
+        width: 100%;
+      }
+
+      #globalMenu nav ul {
+        display: flex;
+      }
+
+      #globalMenu nav li {
+        width: 22%;
+        margin: 3px auto;
+      }
+
+      #globalMenu nav li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      #globalMenu nav li.rotate {
+        animation: rotate-anime 1s linear;
+      }
+
+      #globalMenu nav li a:hover {
+        letter-spacing: 2px;
+        color: rgba(6, 95, 212, 0.8);
+        text-shadow: 2px 2px 2px rgb(255, 255, 255);
+      }
+    }
+
+    @keyframes rotate-anime {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
+
+  <script>
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const headerLists = document.querySelectorAll(".menu-list > li");
+
+    mobileMenuBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("open")
+    })
+
+    if (window.matchMedia("(min-width: 751px)").matches) {
+      let rotateNum = 0;
+      setInterval(function () {
+        if (rotateNum > headerLists.length - 1) {
+          rotateNum = 0;
+        }
+        headerLists[rotateNum].classList.toggle("rotate")
+        rotateNum++
+      }, 500)
+    }
+  </script>
+</body>
+
+</html>
