@@ -17,7 +17,7 @@
       </div>
       <h1 class="hero-text-image">
         <picture>
-          <source media="(min-width:751px )" srcset="./img/waterHolic-pc.png">
+          <source media="(min-width:751px )" srcset="./img/waterHolic-title-pc.png">
           <img src="./img/waterHolic-sp.png" alt="Water Holic">
         </picture>
       </h1>
@@ -260,18 +260,37 @@
 
     @media screen and (min-width:751px) {
       .hero-header .bg-image {
+        position: relative;
         background-image: url(./img/waterHolic-bg-pc.jpg);
+      }
+
+      .hero-header .bg-image::after {
+        content: "";
+        width: 25vw;
+        min-width: 200px;
+        max-width: 350px;
+        height: 25vw;
+        min-height: 200px;
+        max-height: 350px;
+        position: absolute;
+        bottom: 30%;
+        right: 2%;
+        background-image: url(./img/waterHolic-text-pc.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
       }
 
       .hero-header .emblem-image {
         top: calc(100% - 185px);
-        left: calc(100% - 215px);
         width: 150px;
       }
 
       .hero-text-image {
-        bottom: 18%;
-        min-width: 700px;
+        width: 50%;
+        min-width: 450px;
+        max-width: 850px;
+        left: 40%;
+        bottom: 20%;
         filter: drop-shadow(2px 2px 2px #257496);
       }
 
